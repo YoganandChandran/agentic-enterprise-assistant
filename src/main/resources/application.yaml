@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: agentic-enterprise-assistant
+
+  ai:
+    mcp:
+      client:
+        enabled: true
+        name: agentic-enterprise-assistant
+        version: 1.0.0
+        request-timeout: 30s
+        type: SYNC
+
+        streamable-http:
+          connections:
+            employee-server:
+              url: http://localhost:8081
+
+  datasource:
+    url: #Add your own DB connection
+    username: #Add your DB username
+    password: #Add your DB Password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+openrouter:
+  api:
+    key: ${OPENROUTER_API_KEY}
+    base-url: https://openrouter.ai/api/v1
+    model-name: openrouter/free
+
+conversation:
+  memory:
+    max-recent-messages: 10
+    summarization-threshold: 20
